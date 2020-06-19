@@ -1,21 +1,13 @@
 Occlusion-Net: 2D/3D Occluded Keypoint Localization Using Graph Networks 
 ======================
 
+## GCN final project
+
 [N Dinesh Reddy](http://cs.cmu.edu/~dnarapur), [Minh Vo](http://cs.cmu.edu/~mvo), [Srinivasa G. Narasimhan](http://www.cs.cmu.edu/~srinivas/)
 
 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019. 
 
 [[Project](http://www.cs.cmu.edu/~ILIM/projects/IM/CarFusion/cvpr2019/index.html)] [[Paper](http://openaccess.thecvf.com/content_CVPR_2019/papers/Reddy_Occlusion-Net_2D3D_Occluded_Keypoint_Localization_Using_Graph_Networks_CVPR_2019_paper.pdf)] [[Supp](http://openaccess.thecvf.com/content_CVPR_2019/supplemental/Reddy_Occlusion-Net_2D3D_Occluded_CVPR_2019_supplemental.pdf)] [[Bibtex](http://www.cs.cmu.edu/~ILIM/projects/IM/CarFusion/cvpr2019/occlusion_net.bib) ]
-
-### Live Demo of the algorithm on a youtube live stream can be found below or [[HERE](https://www.youtube.com/channel/UC8pHfBEGqPwPlC39Ju7spEQ/live) ]:
-[<img src="https://img.youtube.com/vi/1UI4Zs28V_E/maxresdefault.jpg">](https://www.youtube.com/channel/UC8pHfBEGqPwPlC39Ju7spEQ/live)
-
-### More Results
-<p align="center">
-<img src="data/demo1.gif", width="900">
-<br>
-<sup>Result of Occlusion-Net on a live video from youtube</sup>
-</p>
 
 
 ## Installation
@@ -24,7 +16,7 @@ IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019.
 
 All the stable releases of docker-ce installed from https://docs.docker.com/install/
 
-Install the nvidia-docker from https://github.com/NVIDIA/nvidia-docker
+Install *nvidia-docker2* from https://github.com/NVIDIA/nvidia-docker
 
 Setting up the docker
 
@@ -87,22 +79,28 @@ Occlusion-Net
 ```
 
 
-### Running with docker
+### Train
 
 Training the model on the carfusion dataset 
 
 ```
-sh train.sh occlusion_net <Path_to_Carfusion_dataset>
+sh train.sh occlusion_net <Local_Path_to_Carfusion_dataset>
+ex) sh train.sh occlusion_net home/minji/gcn/carfusion_to_coco/datasets/carfusion
 ``` 
 
 
-### Testing on a sample image
+### Test
 Download a pretrained model from  [[Google Drive](https://drive.google.com/open?id=1EUmhzeuMUnv5whv0ZmmOHTbtUiWdeDly)]
 
-Results on a sample demo image
+Run parser.py to generate image url list
+```
+python parser.py
+```
+
+Test the model on the carfusion dataset
 
 ```
-sh test.sh occlusion_net demo/demo.jpg
+sh test.sh occlusion_net carfusion_test.txt <Local_Path_to_Carfusion_dataset>
 ```
 
 ### Citation
